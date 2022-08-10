@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive card details form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+
+    <div class="banner">
+      <div class="img-container">
+          <!-- <img src="images\bg-main-mobile.png" alt="banner" class="mobile">s -->
+        <img src="images/bg-card-back.png" alt="back of atm" class="card-back">
+        <svg width="84" class="svg-logo" height="47" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="23.478" cy="23.5" rx="23.478" ry="23.5" fill="#fff"/><path d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z" stroke="#fff"/></svg>
+        <div class="card-details">
+          <div class="number" id="atm-number">0000 0000 0000 0000</div>
+          <div class="name_date">
+            <span id="user-name">JANE APPLESEED</span>
+            <span id="exp-date"><span id="month">00</span>/<span id="year">00</span></span>
+          </div>
+        </div>
+        <img src="images/bg-card-front.png" alt="front of atm" class="card-front">
+        <span class="back-number" id="back-number">000</span>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <form  id="form" method="get" >
+        <div>
+          <label for="cardholder-name">CARDHOLDER NAME</label>
+          <input type="text" name="name" placeholder="e.g Jane Appleseed" id="cardholder-name" required>
+        </div>
+
+        <div>
+          <label for="card-number">CARD NUMBER</label>
+          <input type="text" name="card number" placeholder="e.g 1234 5678 9123 0000" id="card-number" required >
+          <span id="warning-card-number">Wrong format, numbers only</span>
+        </div>
+
+        <div class="flex">
+          <div class="first">
+            <label for="exp-month">EXP. DATE (MM/YY)</label>
+            <div class="flex-input">
+              <input type="number" name="month" placeholder="MM" class="margin-left" id="exp-month" ><input class="margin-right" type="number" placeholder="YY" id="exp-year">
+            </div>
+            <span id="warning-exp-month">Can't be blank</span>
+          </div>
+
+          <div class="second">
+            <label for="cvc">CVC</label>
+            <input type="number" name="cvc" placeholder="e.g 123" id="cvc" max="999">
+            <span id="warning-cvc">Can't be blank</span>
+          </div>
+        </div>
+        <button class="btn" type="submit" id="btn" aria-label="submit form button">
+          Confirm
+        </button>
+      </form>
+
+      <div class="submitted-container">
+        <svg width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="40" fill="url(#a)"/><path d="M28 39.92 36.08 48l16-16" stroke="#fff" stroke-width="3"/><defs><linearGradient id="a" x1="-23.014" y1="11.507" x2="0" y2="91.507" gradientUnits="userSpaceOnUse"><stop stop-color="#6348FE"/><stop offset="1" stop-color="#610595"/></linearGradient></defs></svg>
+        <h1>THANK YOU!</h1>
+        <h5>We've added your card details</h5>
+        <div class="btn" aria-label="continue">Continue</div>
+      </div>
+
+      <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="#">stripedtshirt</a>.
+      </div>
+    </div>
+
+
+    
+  </main>
+<script src="app.js"></script>
+</body>
+</html>
