@@ -40,7 +40,7 @@
 
         <div>
           <label for="card-number">CARD NUMBER</label>
-          <input type="text" name="card number" placeholder="e.g 1234 5678 9123 0000" id="card-number" required >
+          <input type="text" name="card number" placeholder="e.g 1234 5678 9123 0000" id="card-number" maxlength="16" required >
           <span id="warning-card-number">Wrong format, numbers only</span>
         </div>
 
@@ -48,14 +48,14 @@
           <div class="first">
             <label for="exp-month">EXP. DATE (MM/YY)</label>
             <div class="flex-input">
-              <input type="number" name="month" placeholder="MM" class="margin-left" id="exp-month" ><input class="margin-right" type="number" placeholder="YY" id="exp-year">
+              <input type="text" name="month" placeholder="MM" maxlength="2" class="margin-left" id="exp-month" ><input class="margin-right"maxlength="2"type="text" placeholder="YY" id="exp-year">
             </div>
             <span id="warning-exp-month">Can't be blank</span>
           </div>
 
           <div class="second">
             <label for="cvc">CVC</label>
-            <input type="number" name="cvc" placeholder="e.g 123" id="cvc" max="999">
+            <input type="text" name="cvc" placeholder="e.g 123" id="cvc" maxlength="3">
             <span id="warning-cvc">Can't be blank</span>
           </div>
         </div>
