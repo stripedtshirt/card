@@ -16,17 +16,27 @@ const warningExpMonth = document.querySelector("#warning-exp-month");
 const warningCvc = document.querySelector("#warning-cvc");
 const submittedContainer = document.querySelector(".submitted-container");
 let isDone = false;
-let hasLetters = false;
+let hasLetters 
 let letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
-function letterChecker(){
+function letterChecker(e){
 
     for( let i = 0 ; i <= letters.length ; i++){
-        if (cardNumber.value.charAt(i) === letters[i]){
+        if (cardNumber.value.charAt(i) == letters[i]){
             warningcardNumber.style.display = "block";
+            console.log("there is a letter in there")
+            hasLetters = true;
+        }else {
+            btn.addEventListener("click", () => {
+                if (cardNumber.value.length === 16 && expMonth.value !== "" && expYear.value !== "" && cvc.value !== "" ) {
+                    form.style.display = "none";
+                    submittedContainer.style.display = "flex";
+                    e.preventDefault()
+                }
+            })
         }
-        console.log(letters[i])
     };
+    
 }
 
 form.addEventListener("submit", (e) => {
@@ -56,7 +66,7 @@ form.addEventListener("submit", (e) => {
         warningCvc.style.display = "none";
     }
 
-    if (cardNumber.value === "" || cardNumber.value === null ) {
+    if (cardNumber.value === "" || cardNumber.value == null ) {
         e.preventDefault()
         warningcardNumber.style.display = "block";
         cardNumber.style.border = "1px solid hsl(0, 100%, 66%)";
@@ -64,26 +74,22 @@ form.addEventListener("submit", (e) => {
         isDone = false;
     }
 
-    if (cardNumber.value.length === 16) {
+    if (cardNumber.value.length === 16 ) {
         warningcardNumber.style.display = "none";
         cardNumber.style.border = "1px solid hsl(270, 3%, 87%)";
         isDone = true;
         e.preventDefault()
     }
 
-    letterChecker();
+    if (cardNumber.value.length < 16 ) {
+        warningcardNumber.style.display = "block";
+        warningcardNumber.innerHTML = "numbers should not be less than 16"
+        cardNumber.style.border = "1px solid hsl(0, 100%, 66%)";
+        e.preventDefault()
+    }
 
-    btn.addEventListener("click", () => {
-        if (cardNumber.value.length === 16 && expMonth.value !== "" && expYear.value !== "" && cvc.value !== "" ) {
-            form.style.display = "none";
-            submittedContainer.style.display = "flex";
-            e.preventDefault()
-        }
-    })
-
-        }
-    
-);
+    letterChecker(e);
+});
 
 function startCheck() {
     if (expYear.value.length>0 || expMonth.value.length>0 || cardholderName.value.length>0 || cvc.value.length>0 || cardNumber.value.length>0 ) {
@@ -101,3 +107,4 @@ function updateDetails() {
 };
 
 let countDownTimerId = setInterval(startCheck, 10);
+
